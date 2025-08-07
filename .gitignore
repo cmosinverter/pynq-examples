@@ -1,0 +1,60 @@
+# Vivado generated folders
+*.xpr
+*.log
+*.jou
+*.str
+*.webtalk
+*.xml
+*.html
+*.bgn
+*.ltx
+*.tcl.history
+
+# Project build and cache folders
+.cache/
+.hw/
+.sim/
+.runs/
+.ip_user_files/
+.gen/
+.srcs/
+.xgui/
+.vivado/
+
+# Bitstream and hardware export
+*.bit
+*.bin
+*.mcs
+*.prm
+*.sdk/
+*.hdf
+
+# IP generation
+*.xci
+*.dcp
+*.bd
+
+# Constraints auto-generated
+*.ncd
+*.ngc
+*.bld
+*.lso
+*.prj
+*.xise
+*.xst
+
+# Backup and temp files
+*~
+*.backup
+*.tmp
+*.temp
+*.log
+*.jou
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Python or scripts
+__pycache__/
+*.pyc
