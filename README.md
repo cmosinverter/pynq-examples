@@ -185,16 +185,10 @@ The Vivado project (`project_1/`) includes:
 - Hardware debugging can be done through Vivado's Integrated Logic Analyzer (ILA)
 - The project supports both simulation and hardware implementation
 
-## License
-
-This project is provided for educational purposes. Please refer to individual IP core licenses for commercial use.
-
 ## Contributing
 
 Feel free to submit issues and enhancement requests!
 
 ## References
 
-- [PYNQ Documentation](http://pynq.readthedocs.io/)
-- [Zynq-7000 Technical Reference Manual](https://www.xilinx.com/support/documentation/user_guides/ug585-Zynq-7000-SoC-TRM.pdf)
-- [AXI Reference Guide](https://www.xilinx.com/support/documentation/ip_documentation/axi_ref_guide/latest/ug1037-vivado-axi-reference-guide.pdf)
+- [AXI Quad SPI LogiCORE IP Product Guide (PG153)](https://docs.amd.com/r/en-US/pg153-axi-quad-spi)
