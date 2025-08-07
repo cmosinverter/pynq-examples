@@ -2,26 +2,30 @@
 
 This project demonstrates how to use various communication interfaces (UART, I2C, and SPI) with PYNQ on the PYNQ-Z2 board. The project includes Vivado hardware design files and Jupyter notebook examples for each communication protocol.
 
-![PYNQ-Z2 Board](figures/pynq-z2.png)
+<img src="figures/pynq-z2.png" alt="PYNQ-Z2 Board" width="400">
 
 ## System Architecture
 
 ![Block Diagram](figures/block-diagram.png)
 
+## My setup
+
+![Setup](figures/setup.JPG)
+
 ## Overview
 
 This repository contains examples for interfacing with external devices using:
-- **UART**: Serial communication at 9600 baud
-- **I2C**: Communication with RTC (Real-Time Clock) devices
-- **SPI**: Communication with SPI Flash memory
+- **UART**: Serial communication at 9600 baud via USB-TTL module
+- **I2C**: Communication with DS3231 RTC (Real-Time Clock) module
+- **SPI**: Communication with W25Q128 SPI Flash memory
 
 ## Hardware Requirements
 
 - PYNQ-Z2 Development Board
 - External devices for testing:
-  - UART device or USB-to-Serial adapter
-  - I2C RTC module (DS1307 or compatible)
-  - SPI Flash memory (Winbond W25Q series or compatible)
+  - USB-TTL module for UART communication
+  - I2C RTC module (DS3231)
+  - SPI Flash memory (Winbond W25Q128)
 
 ## Project Structure
 
@@ -106,17 +110,17 @@ data = uart.read(5)
 ### I2C Communication (`iic.ipynb`)
 
 The I2C example demonstrates:
-- Reading time from DS1307 RTC module
+- Reading time from DS3231 RTC module
 - BCD to integer conversion
 - Using PYNQ's built-in AxiIIC class
 
 Key features:
-- RTC time reading
+- RTC time reading from DS3231
 - Date and time formatting
 - I2C device communication at address 0x68
 
 ```python
-# Read current time from RTC
+# Read current time from DS3231 RTC
 iic.send(0x68, bytes([0x00]), 1)    # Set register pointer
 iic.receive(0x68, rx_data, 7)       # Read 7 bytes
 # Convert BCD to readable format
@@ -125,17 +129,17 @@ iic.receive(0x68, rx_data, 7)       # Read 7 bytes
 ### SPI Communication (`spi.ipynb`)
 
 The SPI example demonstrates:
-- Reading JEDEC ID from SPI Flash memory
+- Reading JEDEC ID from W25Q128 SPI Flash memory
 - Manual chip select control
 - Low-level SPI register operations
 
 Key features:
 - JEDEC ID reading (0x9F command)
 - Manual slave select control
-- SPI Flash memory identification
+- W25Q128 Flash memory identification
 
 ```python
-# Read JEDEC ID from SPI Flash
+# Read JEDEC ID from W25Q128 SPI Flash
 spi.write(SPIDTR, 0x9F)    # Send JEDEC ID command
 # Read 3-byte response
 # Expected: [0xEF, 0x40, 0x18] for Winbond W25Q128
@@ -171,7 +175,7 @@ The Vivado project (`project_1/`) includes:
 
 3. **I2C timeout**:
    - Check pull-up resistors on SCL/SDA
-   - Verify device address (0x68 for RTC)
+   - Verify device address (0x68 for DS3231 RTC)
    - Ensure proper power supply to I2C device
 
 4. **SPI no response**:
